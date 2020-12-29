@@ -1,10 +1,12 @@
-<form method="POST" action="/">
-    <input type="text" id="product" name="product">
-    <input type="submit" value="add to cart">
-</form>
+<%= content_tag(:h1, "Welcome to Cart World") %>
 
-<% if !cart.empty? %>
-    <%= cart.each do |product|  %>
-        <%= product %>
-    <% end %>
+<%= form_tag  products_add_path do %>
+  <%= label_tag 'product', 'Add Your Product Below' %><br>
+  <%= text_field_tag :'product'%>
+  <%= submit_tag "add to cart" %>
+<% end %>
+
+<%= content_tag(:h2, "Cart Contents") %>
+<% cart.each do |product| %>
+  <%= content_tag(:p, product) %>
 <% end %>
